@@ -1,0 +1,17 @@
+{
+  "name": "multiversebootcamp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": { "test": "jest", "test:report": "jest --coverage=true" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pomegranule/MultiverseBootcamp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pomegranule/MultiverseBootcamp/issues"
+  },
+  "homepage": "https://github.com/Pomegranule/MultiverseBootcamp#readme"
+}
