@@ -31,9 +31,9 @@ class ChargingDock {
     };
 };
 
-const scooter = {
-    charged: true,
-    broken: false,
+const scooter = {//This constant is now redundant. Ali has now added this into our current scooter class.
+    charged: true,//although this and
+    broken: false,// this are useful
     startCharging () {
         setTimeout(this.charged = true, 10000);//Keeps the scooter in the dock for 10 seconds.
     },
@@ -58,7 +58,7 @@ class Scooter {
     static allScooter = []
 
     static get scooterCount(){
-        return Scooter.allScooters.length;
+        return Scooter.allScooters.length; // Storing scooters(?)
     };
 
     constructor(){
@@ -70,6 +70,9 @@ class Scooter {
         setTimeout(this.charged = true, 10000);
     };
 };
+
+
+
 
 module.exports = Scooter;
 

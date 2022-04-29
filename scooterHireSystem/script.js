@@ -12,9 +12,10 @@ class User{
         this.age=age;
     };
     logIn(){
-        if (age>=18){
+        if (this.age>=18){
             app.loggedInUsers.push(this);
         }else{
+                  
             throw new Error("You have failed the vibe check. :c");
         }
     };
@@ -23,11 +24,14 @@ class User{
 
 
 class Customer extends User{
-    constructor(bankBalance){
-
-        //super(userID);
+    scooters=[];
+    currentScooter = null; //This preset of "null" will be changed to a scooter object once the customer has been assigned a scooter.
+   
+    constructor(age, bankBalance){
+        //We don't need access to the ID parameter as it is already defined in the User class. And we have extended this via "super".
+        super(age);
         if(!bankBalance){// if statements must be declared within the constructor
-
+            console.log("no money")
  
        } 
        
@@ -36,57 +40,113 @@ class Customer extends User{
 
     
    
-    rentScooter(){
+    rentScooter(dock){
+        if(dock.availableScooters.length>0){
+            
+            this.currentScooter = dock.availableScooters.pop(); // this.currentScooter is referring to the instance of this customer's scooter.
+            this.currentScooter.charged = false;
 
-        ChargingDock.availableScooters.pop([]);
+        }else{
+        
+        
+        throw new Error("We caught you lacking, lmao."); 
+    }
+            
     };
 
-    returnScooter(){
-        ChargingDock.chargingScooters.shift();
-        
+    returnScooter(dock, broken) {
+        if (this.currentScooter) {
+            dock.scooters.push(this.currentScooter); //Putting the scooter into the dock.
+            this.currentScooter.startCharging(); // It starts charging. ALERT:: We need to add the charging function.
+            this.currentScooter.broken = broken;//sets broken value for instance of scooter
+            this.currentScooter = null //This needs to be last so that it only removes the scooter from the user once it has been docked.
+            
+        };
     };
     
-    reportBrokenScooter(){
-        ChargingDock.brokenScooters.shift()
-
-
-        
-    };
+  
 
 };
 
-const testCustomer = new Customer('0');
 
-class maintW extends User{
+
+class MaintWorker extends User{
     
+    constructor(age){
+        super(age)
+      
+
+    }
+   // if (//go to scooters array and see which are broken) {
+       //call the fix function.
+    
+    //}
+
+    
+    fix(scooter){
+           
+        scooter.broken = false
+        console.log("The scooter's HP has been restored");
+          //  console.log(`there are ${scootersNum} scooters`);
+            
+        
+
+    };
+
 };
 
 class Scooter {
-    static scooters = [];
+    //add charging function
     maxRange = 32;
     charged = true;
     broken = false;
-    constructor(scooter){
-        this.scooter = scooter;
+    constructor(){
+        
         this.scooterID = nanoid.nanoid();
     };
-};
 
-
-class ChargingDock{
-    chargingScooters=[];
-    
-    availableScooters=[];
-    
-    brokenScooters=[];
-
-    chargeAScooter(){
-        
-        .push(this)
-        
+    startCharging(){
+        this.charged = true;
     };
     
 };
+    
+
+class ChargingDock{
+    scooters=[]
+    get availableScooters () {
+        return this.scooters.filter(s=> s.charged === true && s.broken === false);
+        
+    };
+    addScooter(scooter){
+        this.scooters.push(scooter)
+    }
+        
+
+    
+};
+
+const londonDock = new ChargingDock()
+const harry = new Customer(17,0)
+const scooter1 = new Scooter()
+const scooter2 = new Scooter()
+const scooter3 = new Scooter()
+const bob = new MaintWorker()
 
 
+//Start of London Dock's Scooters.
+londonDock.addScooter(scooter1)
+londonDock.addScooter(scooter2)
+londonDock.addScooter(scooter3)
+//End of London Dock's Scooters.
+harry.logIn();
+harry.rentScooter(londonDock)
+harry.returnScooter(londonDock, true)
+bob.fix(scooter3)
 
+// console.log(bob.userID)
+// console.log(harry.userID)
+
+//This is the error that we left off on.
+//Tested for type and referrence errors. We've made instances of customers and one maintanence worker.
+//TODO: We need to make sure that the bank balance object has a function.
