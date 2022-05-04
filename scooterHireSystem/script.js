@@ -19,8 +19,11 @@ class User{
             throw new Error("You have failed the vibe check. :c");
         }
     };
-};
 
+    getUserAge(){
+        return this.age;
+    };
+};
 
 
 class Customer extends User{
@@ -32,22 +35,26 @@ class Customer extends User{
         super(age);
         if(!bankBalance){// if statements must be declared within the constructor
             console.log("no money")
- 
-       } 
+        } 
        
        this.bankBalance=bankBalance;
-    };
 
+
+    };
     
-   
+    getBankBalance()
+    {
+        return this.bankBalance;
+    }
+
     rentScooter(dock){
         if(dock.availableScooters.length>0){
             
             this.currentScooter = dock.availableScooters.pop(); // this.currentScooter is referring to the instance of this customer's scooter.
             this.currentScooter.charged = false;
-
+            this.bankBalance = this.bankBalance-1
+            console.log(`Harry got his pockets rinsed. Foo only got ${this.bankBalance} in his bank account `)
         }else{
-        
         
         throw new Error("We caught you lacking, lmao."); 
     }
@@ -58,12 +65,12 @@ class Customer extends User{
         if (this.currentScooter) {
             dock.scooters.push(this.currentScooter); //Putting the scooter into the dock.
             this.currentScooter.startCharging(); // It starts charging. ALERT:: We need to add the charging function.
-            this.currentScooter.broken = broken;//sets broken value for instance of scooter
+            this.currentScooter.broken = broken;//sets broken value for this customer's instance of scooter
             this.currentScooter = null //This needs to be last so that it only removes the scooter from the user once it has been docked.
             
         };
     };
-    
+      
   
 
 };
@@ -93,7 +100,14 @@ class MaintWorker extends User{
 
     };
 
+    getBrokenScooter(){
+
+        return this.scooter.broken
+    }
+
 };
+
+
 
 class Scooter {
     //add charging function
@@ -107,6 +121,10 @@ class Scooter {
 
     startCharging(){
         this.charged = true;
+    };
+
+    getChargedScooter(){
+        return this.scooter.charged;
     };
     
 };
@@ -127,7 +145,7 @@ class ChargingDock{
 };
 
 const londonDock = new ChargingDock()
-const harry = new Customer(17,0)
+const harry = new Customer(18,1)
 const scooter1 = new Scooter()
 const scooter2 = new Scooter()
 const scooter3 = new Scooter()
@@ -139,7 +157,12 @@ londonDock.addScooter(scooter1)
 londonDock.addScooter(scooter2)
 londonDock.addScooter(scooter3)
 //End of London Dock's Scooters.
+try{
 harry.logIn();
+}
+catch{
+    console.log("Oops");
+}
 harry.rentScooter(londonDock)
 harry.returnScooter(londonDock, true)
 bob.fix(scooter3)
@@ -150,3 +173,5 @@ bob.fix(scooter3)
 //This is the error that we left off on.
 //Tested for type and referrence errors. We've made instances of customers and one maintanence worker.
 //TODO: We need to make sure that the bank balance object has a function.
+
+module.exports={User,Customer,MaintWorker,Scooter,ChargingDock,app}//exports all classes to test file 

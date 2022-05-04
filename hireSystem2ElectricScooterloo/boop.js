@@ -6,8 +6,10 @@ class User{
        this.userID = Math.random().toString(36).slice(2);
    };
 
+   userSubmit = document.getElementById("userSubmit");
+
    userLogIn(){
-       const userInput = document.getElementById("userIDInput").value();
+       const userInput = document.getElementById("userIDInput").value;
 
        if (userInput === this.userID){
            console.log(`Welcome back, ${customer.userName}!`);

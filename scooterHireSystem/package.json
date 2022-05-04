@@ -4,11 +4,15 @@
   "description": "GroupProject",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:report": "jest --coverage=true"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "nanoid": "^3.3.3"
+  },
+  "devDependencies": {
+    "jest": "^28.0.3"
   }
 }
