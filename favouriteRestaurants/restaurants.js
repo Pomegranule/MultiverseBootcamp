@@ -8,28 +8,21 @@ const db = new sqlite3.Database("./database.db", sqlite3.OPEN_READWRITE, (err)=>
     }
 });
 
-// db.run("CREATE TABLE users(first_name, last_name, username, password, email, id)s");
-
-// const sql = "INSERT INTO users VALUES('Sam', 'Test', 'STest', 'Test123', 'samantha.Test@multiverse.io', 2)";
-// db.run(sql, (err)=>{
-//     if(err){
-//         return console.error(err.message);
-//     } else {
-//         console.log("Row Created!");
-//     }
-// });
-
-// const sql = "INSERT INTO users VALUES('Eleanor', 'Boop', 'Scadoop', 'Doopboop', 'eleanor.is.fashinonable@slaygorrrl.org', 3)";
-// db.run(sql, (err)=>{
-//     if(err){
-//         return console.error(err.message);
-//     } else {
-//         console.log("Row Created!");
-//     }
-// });
-
 
 //////////////////////SELECT////////////////////////////////////////
+
+// const selectSql = "SELECT MENUS.name as 'Menus Name', MENUITEMS.Name as 'Menu Items Name' FROM MENUS JOIN MENUITEMS ON MENUS.id = MENUITEMS.ID_Menu WHERE MENUS.id = 2;";
+
+// db.all(selectSql, (err, rows)=>{
+//     if(err){
+//         return console.error(err.message);
+//     }else{
+
+//         rows.forEach((row)=>{
+//             console.log(row);
+//         });
+//     };
+// });
 
 // const selectSql = "SELECT * FROM MENUITEMS";
 
@@ -47,14 +40,6 @@ const db = new sqlite3.Database("./database.db", sqlite3.OPEN_READWRITE, (err)=>
 
 //////////////////////SELECT///////////////////////////////////////
 
-// const sql = "UPDATE users SET first_name = 'Samantha' WHERE first_name = 'Sam';"
-// db.run(sql,(err)=>{
-//     if(err){
-//         return console.error(err.message);
-//     }else{
-//         console.log("Row Updated!")
-//     };
-// });
 
 // db.run("CREATE TABLE COMPANY(ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, AGE INTEGER NOT NULL, ADDRESS, SALARY REAL);");
 
@@ -79,7 +64,7 @@ const db = new sqlite3.Database("./database.db", sqlite3.OPEN_READWRITE, (err)=>
 //     }
 // });
 
-// const sql = "ALTER TABLE MENUITEMS DROP COLUMN ID_no";
+// const sql = "ALTER TABLE MENUS DROP COLUMN PRICE";
 // db.run(sql, (err)=>{    
 //     if(err)
 //     {
@@ -98,7 +83,7 @@ const db = new sqlite3.Database("./database.db", sqlite3.OPEN_READWRITE, (err)=>
 //     if(err){
 //         return console.error(err.message);
 //     } else {
-//         console.log("Row Created!");
+//         console.log("Rows Created!");
 //     }
 // });
 
@@ -122,9 +107,22 @@ const db = new sqlite3.Database("./database.db", sqlite3.OPEN_READWRITE, (err)=>
 //     }
 // });
 
-// db.run("CREATE TABLE MENUITEMS(ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, PRICE INTEGER);");
+// db.run("CREATE TABLE MENUITEMS(ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, PRICE REAL, ID_Menu INTEGER, FOREIGN KEY (ID_Menu) REFERENCES MENUS(ID));");
 
-// const sql = "INSERT INTO MENUITEMS(NAME, PRICE) VALUES('Green Tea Ice Cream', 1.90 )";
+// const sql = "INSERT INTO MENUITEMS(NAME, PRICE, ID_Menu) VALUES('Coca Cola', 2.50, 2 )";
+
+// db.run(sql, (err)=>{
+//     if(err){
+//         return console.error(err.message);
+//     } else {
+//         console.log("Item Created!");
+//     }
+// });
+
+
+// db.run("CREATE TABLE MENUS(ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, PRICE REAL, ID_rest INTEGER, FOREIGN KEY (ID_rest) REFERENCES RESTAURANTS(ID));");
+
+// const sql = "INSERT INTO MENUS(NAME, ID_rest) VALUES('Drinks', 1)";
 
 // db.run(sql, (err)=>{
 //     if(err){
@@ -134,25 +132,7 @@ const db = new sqlite3.Database("./database.db", sqlite3.OPEN_READWRITE, (err)=>
 //     }
 // });
 
-const sql = "ALTER TABLE MENUITEMS ADD ID_no INTEGER FOREIGN KEY";
 
-db.run(sql, (err)=>{
-    if(err){
-        return console.error(err.message);
-    } else {
-        console.log("Column Created!");
-    }
-});
-
-
-// const sql = "ALTER TABLE MENUS RENAME COLUMN ID_no TO ID_no FOREIGN KEY"
-// db.run(sql,(err)=>{
-//     if(err){
-//         return console.error(err.message);
-//     }else{
-//         console.log("Column Updated!")
-//     };
-// });
 
 db.close((err)=>{
     if(err){
@@ -161,5 +141,3 @@ db.close((err)=>{
         console.log("DB Closed");
     };
 });
-
-
