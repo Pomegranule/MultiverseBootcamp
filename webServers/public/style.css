@@ -1,0 +1,19 @@
+html, body{
+    padding:0;
+    border: 0;
+    background: #A0BF22;
+}
+
+/* #centrePiece{
+    display: block;
+} */
+
+img{
+    height: 20em;
+    padding: 5% 42%;
+
+}
+
+span{
+    padding: 0% 46%;
+}
