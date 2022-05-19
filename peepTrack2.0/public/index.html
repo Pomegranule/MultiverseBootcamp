@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- This fixes our Axios Problem. We are importing from browser rather than Node -->
+    <script src="script.js" defer></script>
+    <href src="style.css" type="text/stylesheet"></href>
+    <title>Peep Tracker 2.0</title>
+</head>
+
+<body>
+    <aside>
+
+    </aside>
+    <main>
+        <div class="userForm" id="user">
+            <form id="createPeep" onsubmit="`processPeep${this}; return false;`">
+                <fieldset id="formBorder">
+                    <legend>Create Your Peep</legend>
+
+                    <label id="peepNameLabel" for="peepNameAnswer">What's your peep's name?</label><br>
+                    <input type="text" id="peepNameAnswer" placeholder="Jimothy 2: Electric Boogaloo"><br>
+
+                    <label id="peepDealLabel" for="peepDealAnswer">So like... what's your deal?</label><br>
+                    <input type="textarea" id="peepDealAnswer" placeholder="So like, he turned himself into a pickle, right..."><br>
+
+                    <label id="peepColourLabel" for="peepFavColour">What's your favourite colour?</label><br>
+                    <input type="color" id="peepFavColour"><br>
+                    
+                    <label id="peepFruitLabel" for="peepFruitSelector">Which of the following fruit are most bareable to you?</label><br>
+                    <select id="peepFruitSelector">
+                        <option value="Apple">Apple</option>
+                        <option value="Banana">Banana</option>
+                        <option value="Orange">Orange</option>
+                        <option value="Pear">Pear</option>
+                        <option value="Pomegranate">Pomegranate</option>
+                        <option value="SweetSop">Sweet Sop</option>
+                        <option value="Persimmon">Persimmon</option>
+                        <option value="HoneydewMelon">Honeydew Melon</option>
+                    </select><br>
+
+                    <label id="peepDateLabel" for="peepDateAnswer" >What date is it today?</label><br>
+                    <input type="date" id="peepDateAnswer" placeholder="DD/MM/YYYY"><br>
+
+                    <submit>Save new peep.</submit>
+                </fieldset>
+            </form>
+        </div>
+    </main>
+
+</body>
+
+</html>
