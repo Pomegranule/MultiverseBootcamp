@@ -18,12 +18,12 @@
     </aside>
     <main>
         <div class="userForm" id="user">
-            <form id="createPeep" onsubmit="`processPeep${this}; return false;`">
+            <form id="createPeep" onsubmit="processPeep(this); return false;">
                 <fieldset id="formBorder">
                     <legend>Create Your Peep</legend>
 
                     <label id="peepNameLabel" for="peepNameAnswer">What's your peep's name?</label><br>
-                    <input type="text" id="peepNameAnswer" placeholder="Jimothy 2: Electric Boogaloo"><br>
+                    <input type="text" id="peepNameAnswer" placeholder="E.g. Jimothy 2: Electric Boogaloo"><br>
 
                     <label id="peepDealLabel" for="peepDealAnswer">So like... what's your deal?</label><br>
                     <input type="textarea" id="peepDealAnswer" placeholder="So like, he turned himself into a pickle, right..."><br>
@@ -31,7 +31,7 @@
                     <label id="peepColourLabel" for="peepFavColour">What's your favourite colour?</label><br>
                     <input type="color" id="peepFavColour"><br>
                     
-                    <label id="peepFruitLabel" for="peepFruitSelector">Which of the following fruit are most bareable to you?</label><br>
+                    <label id="peepFruitLabel" for="peepFruitSelector">Which of the following fruit are the most bareable to you?</label><br>
                     <select id="peepFruitSelector">
                         <option value="Apple">Apple</option>
                         <option value="Banana">Banana</option>
@@ -43,7 +43,7 @@
                         <option value="HoneydewMelon">Honeydew Melon</option>
                     </select><br>
 
-                    <label id="peepDateLabel" for="peepDateAnswer" >What date is it today?</label><br>
+                    <label id="peepDateLabel" for="peepDateAnswer">What date is it today?</label><br>
                     <input type="date" id="peepDateAnswer" placeholder="DD/MM/YYYY"><br>
 
                     <submit>Save new peep.</submit>
