@@ -30,19 +30,19 @@ const db = new sqlite3.Database("Database/database.db", sqlite3.OPEN_READWRITE, 
 
 
 ///////////////////////////////SELECT////////////////////////////////
-// const selectSql = "SELECT * FROM userPeeps";
+const selectSql = "SELECT * FROM userPeeps";
 
 
-// db.all(selectSql, (err, rows)=>{
-//     if(err){
-//         return console.error(err.message);
-//     }else{
+db.all(selectSql, (err, rows)=>{
+    if(err){
+        return console.error(err.message);
+    }else{
 
-//         rows.forEach((row)=>{
-//             console.log(row);
-//         });
-//     };
-// });
+        rows.forEach((row)=>{
+            console.log(row);
+        });
+    };
+});
 ///////////////////////////////SELECT////////////////////////////////
 
 

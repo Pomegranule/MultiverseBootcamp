@@ -2,13 +2,31 @@
 
 const sqlite3 = require("sqlite3");
 
-const db = new sqlite3.Database("Database/database.db", sqlite3.OPEN_READWRITE, (err)=>{ // Creating a new database that we can read and write to.
-    if(err){
+const db = new sqlite3.Database("Database/database.db", sqlite3.OPEN_READWRITE, (err) => { // Creating a new database that we can read and write to.
+    if (err) {
         return console.error(err.message);
-    } else{
+    } else {
         console.log("Success!!");
     }
 });
+
+class userDatabase {
+    static GetAllUsers() {
+        const selectSql = `SELECT * from userAccount`;
+        return new Promise((res, rej) => {
+            db.all(selectSql, (err, rows) => {
+                if (err) {
+                    console.log('Hit rej')
+                    rej(new Error(err.message));
+                } else {
+                    console.log('Hit res')
+                    res(rows);
+                };
+            });
+        });
+    };
+};
+
 
 
 ///////////////////Creating userAccount Table//////////////////////
@@ -25,7 +43,7 @@ const db = new sqlite3.Database("Database/database.db", sqlite3.OPEN_READWRITE, 
 
 
 //////////////Inserting userName column into userAccount Table/////////////
-// const sql = "INSERT INTO userAccount(userName, userPin) VALUES('PomPomPurray','pommy97')";
+// const sql = "INSERT INTO userAccount(userName, userPin) VALUES('sammieTheLambie','gorl22')";
 
 // db.run(sql, (err)=>{
 //     if(err){
@@ -41,12 +59,12 @@ const db = new sqlite3.Database("Database/database.db", sqlite3.OPEN_READWRITE, 
 // const selectSql = "SELECT * FROM userAccount";
 
 
-// db.all(selectSql, (err, rows)=>{
-//     if(err){
+// db.all(selectSql, (err, rows) => {
+//     if (err) {
 //         return console.error(err.message);
-//     }else{
+//     } else {
 
-//         rows.forEach((row)=>{
+//         rows.forEach((row) => {
 //             console.log(row);
 //         });
 //     };
@@ -83,11 +101,13 @@ const db = new sqlite3.Database("Database/database.db", sqlite3.OPEN_READWRITE, 
 
 
 //////////////////////////Closing the Database/////////////////////////////
-db.close((err)=>{
-    if(err){
-        return console.error(err.message);
-    }else{
-        console.log("DB Closed");
-    };
-});
+// db.close((err) => {
+//     if (err) {
+//         return console.error(err.message);
+//     } else {
+//         console.log("DB Closed");
+//     };
+// });
 //////////////////////////Closing the Database/////////////////////////////
+
+module.exports = userDatabase;
