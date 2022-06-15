@@ -1,28 +1,28 @@
 'use strict';
 
 // //////////////////Express Server/////////////////////////
-// const express = require('express');
+const express = require('express');
 
-// const app = express();
-// const port = 3003;
+const app = express();
+const port = 3003;
 
-// app.use(express.static('public'));
+app.use(express.static('public'));
 
-// ///Add Access Control Allow Origin headers
+///Add Access Control Allow Origin headers
 
-// app.use((request, response, next) => {
-//     response.setHeader("Access-Control-Allow-Origin", " ");
+app.use((request, response, next) => {
+    response.setHeader("Access-Control-Allow-Origin", " ");
     
-//     response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//     next();
-// });
+    response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
-// app.use(express.urlencoded({ extended: true }));
-// app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-// app.listen(port, () => {
-//     console.log(`Server listening at http://localhost:${port}`);
-// });
+app.listen(port, () => {
+    console.log(`Server listening at http://localhost:${port}`);
+});
 // //////////////////Express Server/////////////////////////
 
 
@@ -64,7 +64,7 @@ const db = new sqlite3.Database("./database.db", sqlite3.OPEN_READWRITE, (err) =
 
 
 /////////////////CREATE TABLE////////////////////
-db.run("CREATE TABLE defaultPeeps(ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, FAVFRUIT TEXT NOT NULL, FAVCOLOUR TEXT NOT NULL, DATE INTEGER);");
+// db.run("CREATE TABLE defaultPeeps(ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEXT NOT NULL, FAVFRUIT TEXT NOT NULL, FAVCOLOUR TEXT NOT NULL, DATE INTEGER);");
 /////////////////CREATE TABLE////////////////////
 
 
@@ -113,13 +113,13 @@ db.run("CREATE TABLE defaultPeeps(ID INTEGER PRIMARY KEY AUTOINCREMENT, NAME TEX
 
 
 ////////////////CLOSING THE DATABASE//////////////////
-db.close((err)=>{
-    if(err){
-        return console.error(err.message);
-    }else{
-        console.log("Database Closed.");
-    };
-});
+// db.close((err)=>{
+//     if(err){
+//         return console.error(err.message);
+//     }else{
+//         console.log("Database Closed.");
+//     };
+// });
 ////////////////CLOSING THE DATABASE//////////////////
 
 

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> -->
+    <!-- This fixes our Axios Problem. We are importing from browser rather than Node -->
+    <script src="./script.js" defer></script>
+
+    <title>Peep Tracker 4.0 | Sign Up</title>
+</head>
+
+<body>
+    <button id="homeButton"><a href="./index.html">Home</a></button>
+    
+    <button id="signUpButton"><a href="./signup.html">Create an Account</a></button>
+
+    <button id="logInButton"><a href="./login.html">Login if you already have an account</a></button>
+
+    <form id="userSignUpForm" onsubmit="userSignUp(this); return false;">
+
+        <fieldset>
+            <legend>Peep Tracker 4.0 | Sign Up</legend><br>
+            <label id="userNameLabel" for="userNameInput">Please enter your username. <br>(You will use this to login to
+                your account so make sure to remember it.)</label><br>
+            <input type="text" id="userNameInput" placeholder="E.g. Pomegranule97"><br>
+
+            <label id="userPinLabel" for="userPinInput">Please enter your password.</label><br>
+            <input type="password" id="userPinInput" placeholder="Your password here:"><br>
+
+            <label id="userConfirmPinLabel" for="userConfirmPinInput">Please confirm your password.</label><br>
+            <input type="password" id="userConfirmPinInput" placeholder="Confirm your password here:"><br>
+
+            <button type="submit" id="newUserSubmitButton">Sign Up</button>
+        </fieldset>
+    </form>
+</body>
+
+</html>

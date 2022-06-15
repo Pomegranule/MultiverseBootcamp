@@ -2,6 +2,7 @@
 
 const api = require("/Users/egreen/Desktop/Multiverse Bootcamp/MultiverseBootcamp/peepTracker3.0/API");
 
+const 
 
 
 function userLogin(){
@@ -15,6 +16,12 @@ function userLogin(){
     //Login.html will have a form with username and pin fields and submit button
     //When submit button clicked call userLogin()
     //DO A POST TO /checkUser and pass in username and PIN
+
+    let userNameInput = document.getElementById("userNameInput").value;
+
+    let userPinInput = document.getElementById("userPinInput").value;
+
+
 };
 
 function userSignUp(){

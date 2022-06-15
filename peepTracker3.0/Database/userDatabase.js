@@ -3,29 +3,76 @@
 const sqlite3 = require("sqlite3");
 
 const db = new sqlite3.Database("Database/database.db", sqlite3.OPEN_READWRITE, (err) => { // Creating a new database that we can read and write to.
+
     if (err) {
+
         return console.error(err.message);
+
     } else {
+
         console.log("Success!!");
+
     }
+
 });
 
-class userDatabase {
-    static GetAllUsers() {
-        const selectSql = `SELECT * from userAccount`;
-        return new Promise((res, rej) => {
-            db.all(selectSql, (err, rows) => {
-                if (err) {
-                    console.log('Hit rej')
-                    rej(new Error(err.message));
-                } else {
-                    console.log('Hit res')
-                    res(rows);
-                };
-            });
-        });
-    };
-};
+
+
+
+// class userDatabase {
+    
+//     static GetAllUsers() {
+    
+//         const selectSql = `SELECT * from userAccount`;
+    
+//         return new Promise((response, reject) => {
+    
+//             db.all(selectSql, (err, rows) => {
+    
+//                 if (err) {
+    
+//                     console.log('Hit reject')
+    
+//                     reject(new Error(err.message));
+    
+//                 } else {
+    
+//                     console.log('Hit response')
+    
+//                     response(rows);
+    
+//                 };
+    
+//             });
+    
+//         });
+    
+//     };
+
+
+//     static userSignUp(){
+        
+
+
+//         const sql = `INSERT INTO userAccount(userName, userPin) VALUES('${newUserName}','${newUserPin}')`;
+
+//         db.run(sql, (err) => {
+        
+//             if (err) {
+        
+//                 return console.error(err.message);
+        
+//             } else {
+        
+//                 console.log("New user created!");
+        
+//             };
+        
+//         });
+    
+//     };
+
+// };
 
 
 
@@ -110,4 +157,4 @@ class userDatabase {
 // });
 //////////////////////////Closing the Database/////////////////////////////
 
-module.exports = userDatabase;
+// module.exports = userDatabase;
