@@ -24,19 +24,19 @@ const db = new sqlite3.Database("./database.db", sqlite3.OPEN_READWRITE, (err)=>
 //     };
 // });
 
-// const selectSql = "SELECT * FROM MENUITEMS";
+const selectSql = "SELECT SUM(PRICE) FROM MENUITEMS";
 
 
-// db.all(selectSql, (err, rows)=>{
-//     if(err){
-//         return console.error(err.message);
-//     }else{
+db.all(selectSql, (err, rows)=>{
+    if(err){
+        return console.error(err.message);
+    }else{
 
-//         rows.forEach((row)=>{
-//             console.log(row);
-//         });
-//     };
-// });
+        rows.forEach((row)=>{
+            console.log(row);
+        });
+    };
+});
 
 //////////////////////SELECT///////////////////////////////////////
 
