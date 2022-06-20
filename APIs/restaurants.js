@@ -24,11 +24,7 @@ const db = new sqlite3.Database("./database.db", sqlite3.OPEN_READWRITE, (err)=>
 //     };
 // });
 
-<<<<<<< HEAD
-const selectSql = "SELECT SUM(PRICE) FROM MENUITEMS";
-=======
-const selectSql = "SELECT * FROM MENUS";
->>>>>>> 87084d84a929c504ee1519a494ea2b5cde032e9c
+const selectSql = "SELECT * FROM RESTAURANTS";
 
 
 db.all(selectSql, (err, rows)=>{
